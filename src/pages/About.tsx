@@ -13,12 +13,11 @@ export default function About() {
   ];
 
   const tools = [
-    'Adobe Creative Suite',
-    'Figma',
-    'Sketch',
-    'After Effects',
+    'Adobe Photoshop',
+    'Adobe Illustrator',
     'Premiere Pro',
-    'Cinema 4D',
+    'Meta ads manager',
+    'Google adsense'",
   ];
 
   const values = [
