@@ -5,11 +5,11 @@ export default function About() {
     'Brand Identity Design',
     'Logo Design',
     'Visual Communication',
-   // 'Typography',
-   // 'Color Theory',
-  //  'Motion Design',
+   //'Typography',
+   //'Color Theory',
+  //'Motion Design',
     'Video Editing',
-   // 'Creative Direction',
+   //'Creative Direction',
     'Performance Marketing',
   ];
 
