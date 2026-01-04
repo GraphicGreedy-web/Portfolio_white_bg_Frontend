@@ -14,7 +14,7 @@ export default function Videos() {
       id: 1,
       title: 'Brand Story: Luxe Fashion',
       category: 'Brand Film',
-      thumbnail: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'https://youtu.be/UzvswBBTIZ8',
       duration: '2:30',
     },
     {
