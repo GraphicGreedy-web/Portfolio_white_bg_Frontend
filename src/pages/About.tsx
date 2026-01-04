@@ -7,6 +7,7 @@ export default function About() {
     'Visual Communication',
     'Typography',
     'Color Theory',
+  //  'Motion Design',
     'Video Editing',
     'Creative Direction',
   ];
