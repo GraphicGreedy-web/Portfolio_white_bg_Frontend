@@ -17,7 +17,7 @@ export default function About() {
     'Adobe Illustrator',
     'Premiere Pro',
     'Meta ads manager',
-    'Google adsense'",
+    'Google adsense',
   ];
 
   const values = [
