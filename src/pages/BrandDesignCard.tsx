@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { getSingleBrandHook } from "../hooks/fetchhook.js";
 function BrandDesignCard() {
   const { brandId } = useParams();
   console.log("got it: ", brandId);
@@ -13,7 +14,12 @@ function BrandDesignCard() {
     typography: string;
     mockups: string[];
   }
- 
+  const singleBrand = getSingleBrandHook(brandId);
+  console.log("main single brand: ", singleBrand);
+  if (!singleBrand) {
+    return <div>Loading...</div>;
+  }
+
   const logos: Logo[] = [
     {
       id: 1,
@@ -193,7 +199,7 @@ function BrandDesignCard() {
       <div className=" z-50 flex items-center justify-center p-6">
         <div className="p-8 lg:p-12">
           <h2 className="text-3xl lg:text-8xl font-serif font-bold mb-8">
-            {logo.title}
+            {logo?.title}
           </h2>
 
           <div className="space-y-12">
@@ -202,8 +208,8 @@ function BrandDesignCard() {
                 Primary Logo
               </h3>
               <img
-                src={logo.image}
-                alt={logo.title}
+                src={logo?.image}
+                alt={logo?.title}
                 className="h-25 rounded-xl"
                 style={{ height: "20rem", width: "20rem" }}
               />
@@ -214,7 +220,7 @@ function BrandDesignCard() {
                 Variations
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {logos.map((variation, idx) => (
+                {logos?.map((variation, idx) => (
                   <img
                     key={idx}
                     src={variation}
@@ -230,7 +236,7 @@ function BrandDesignCard() {
                 Color Palette
               </h3>
               <div className="flex gap-4">
-                {logo.colors.map((color) => (
+                {logo?.colors.map((color) => (
                   <div key={color} className="text-center">
                     <div
                       className="w-16 h-16 rounded-lg border-2 border-gray-200 mb-2"
@@ -246,7 +252,7 @@ function BrandDesignCard() {
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">
                 Typography
               </h3>
-              <p className="text-gray-600">{logo.typography}</p>
+              <p className="text-gray-600">{logo?.typography}</p>
             </div>
 
             <div>
@@ -254,7 +260,7 @@ function BrandDesignCard() {
                 Mockups
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {logo.mockups.map((mockup, idx) => (
+                {logo?.mockups.map((mockup, idx) => (
                   <img
                     key={idx}
                     src={mockup}

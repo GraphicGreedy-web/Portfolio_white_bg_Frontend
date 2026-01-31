@@ -4,6 +4,7 @@ export const api = axios.create({
     withCredentials: true
 })
 export const brandRoute = () => api.get("/api/brands")
+export const singleBrandRoute = (brandId) => api.get(`/api/brands/${brandId}`)
 export const commentRoute = () => api.get("/api/comments")
 export const contactRoute = () => api.get("/api/contacts")
 export const videoRoute = () => api.get("/api/videos")
