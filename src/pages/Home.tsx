@@ -1,8 +1,17 @@
-import { Link } from 'react-router-dom';
-import { ChevronDown, Palette, Layers, Film, TrendingUp, Video, Pen } from 'lucide-react';
-import { useState, useEffect } from 'react';
-
+import { Link } from "react-router-dom";
+import {
+  ChevronDown,
+  Palette,
+  Layers,
+  Film,
+  TrendingUp,
+  Video,
+  Pen,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { useFeatures } from "../hooks/variablehook.js";
 export default function Home() {
+  const { videos, brands, visuals } = useFeatures();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -12,91 +21,99 @@ export default function Home() {
   const services = [
     {
       icon: Palette,
-      title: 'Brand Designing',
-      description: 'Comprehensive brand identities that tell your story',
+      title: "Search Engine Optimization",
+      description: "Proper Search to get your website at top",
     },
     {
       icon: Pen,
-      title: 'Logo Design',
-      description: 'Distinctive logos that capture brand essence',
+      title: "Logo Design",
+      description: "Distinctive logos that capture brand essence",
     },
     {
       icon: Layers,
-      title: 'Brand Identity',
-      description: 'Complete visual systems for cohesive brands',
+      title: "Brand Identity",
+      description: "Complete visual systems for cohesive brands",
     },
     {
       icon: Film,
-      title: 'Visual Communication',
-      description: 'Compelling posters and visual narratives',
+      title: "Visual Communication",
+      description: "Compelling posters and visual narratives",
     },
     {
       icon: TrendingUp,
-      title: 'Performance Marketing',
-      description: 'Strategic designs that drive results',
+      title: "Performance Marketing",
+      description: "Strategic designs that drive results",
     },
     {
       icon: Video,
-      title: 'Video Editing',
-      description: 'Cinematic editing and motion design',
+      title: "Video Editing",
+      description: "Cinematic editing",
     },
   ];
 
-  const featuredWorks = [
-    {
-      id: 1,
-      title: 'Luxe Brand Identity',
-      category: 'Branding',
-      image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      link: '/brand-designing',
-    },
-    {
-      id: 2,
-      title: 'Modern Logo Suite',
-      category: 'Logo',
-      image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      link: '/brand-designing',
-    },
-    {
-      id: 3,
-      title: 'Campaign Posters',
-      category: 'Poster',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      link: '/visual-communication',
-    },
-    {
-      id: 4,
-      title: 'Brand Film',
-      category: 'Video',
-      image: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800',
-      link: '/videos',
-    },
-  ];
-
+  // const featuredWork = [
+  //   {
+  //     id: 1,
+  //     title: "Luxe Brand Identity",
+  //     category: "Branding",
+  //     image:
+  //       "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+  //     link: "/brand-designing",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Modern Logo Suite",
+  //     category: "Logo",
+  //     image:
+  //       "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+  //     link: "/brand-designing",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Campaign Posters",
+  //     category: "Poster",
+  //     image:
+  //       "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+  //     link: "/visual-communication",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Brand Film",
+  //     category: "Video",
+  //     image:
+  //       "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+  //     link: "/videos",
+  //   },
+  // ];
+  const featuredWorks = [videos[0], brands[0], visuals[0]].filter(Boolean);
+  if (!featuredWorks.length) return null   // or loader
+  console.log("feayres: ", featuredWorks);
   return (
     <div className="min-h-screen bg-white">
       <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-12">
         <div
           className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight leading-tight mb-6">
             Graphic Designer
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Creating premium visual experiences that elevate brands and captivate audiences through thoughtful design and strategic creativity.
+            Creating premium visual experiences that elevate brands and
+            captivate audiences through thoughtful design and strategic
+            creativity.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/brand-designing"
-              className="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105 font-medium"
+              className="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105 font-medium text-decoration-none"
             >
               View Portfolio
             </Link>
             <Link
               to="/about"
-              className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105 font-medium"
+              className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105 font-medium text-decoration-none"
             >
               About Me
             </Link>
@@ -115,15 +132,16 @@ export default function Home() {
               Featured Work
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              A selection of recent projects showcasing brand design, visual identity, and creative direction.
+              A selection of recent projects showcasing brand design, visual
+              identity, and creative direction.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {featuredWorks.map((work, index) => (
               <Link
-                key={work.id}
-                to={work.link}
+                key={work._id}
+                // to={work.link}
                 className="group relative overflow-hidden rounded-2xl aspect-[4/3] transition-all duration-500 hover:scale-[1.02]"
                 style={{
                   transitionDelay: `${index * 100}ms`,
@@ -191,7 +209,8 @@ export default function Home() {
             Let's Create Something Extraordinary
           </h2>
           <p className="text-gray-400 mb-12 text-lg">
-            Ready to elevate your brand? Get in touch and let's discuss your project.
+            Ready to elevate your brand? Get in touch and let's discuss your
+            project.
           </p>
           <Link
             to="/contact"

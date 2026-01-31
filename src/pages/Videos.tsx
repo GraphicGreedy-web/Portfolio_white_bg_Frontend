@@ -1,5 +1,5 @@
-import { Play } from 'lucide-react';
-
+import { Play } from "lucide-react";
+import { getVideoHook } from "../hooks/fetchHook.js";
 interface Video {
   id: number;
   title: string;
@@ -7,50 +7,55 @@ interface Video {
   thumbnail: string;
   duration: string;
 }
-
 export default function Videos() {
+  console.log("video main: ", getVideoHook());
   const videos: Video[] = [
     {
       id: 1,
-      title: 'Brand Story: Luxe Fashion',
-      category: 'Brand Film',
-      thumbnail: 'https://youtu.be/UzvswBBTIZ8',
-      duration: '2:30',
+      title: "Brand Story: Luxe Fashion",
+      category: "Brand Film",
+      thumbnail: "https://youtu.be/UzvswBBTIZ8",
+      duration: "2:30",
     },
     {
       id: 2,
-      title: 'Product Launch Campaign',
-      category: 'Commercial',
-      thumbnail: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      duration: '1:45',
+      title: "Product Launch Campaign",
+      category: "Commercial",
+      thumbnail:
+        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+      duration: "1:45",
     },
     {
       id: 3,
-      title: 'Motion Graphics Reel',
-      category: 'Motion Design',
-      thumbnail: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      duration: '3:15',
+      title: "Motion Graphics Reel",
+      category: "Motion Design",
+      thumbnail:
+        "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+      duration: "3:15",
     },
     {
       id: 4,
-      title: 'Event Highlight Video',
-      category: 'Documentary',
-      thumbnail: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      duration: '4:20',
+      title: "Event Highlight Video",
+      category: "Documentary",
+      thumbnail:
+        "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+      duration: "4:20",
     },
     {
       id: 5,
-      title: 'Social Media Campaign',
-      category: 'Digital Content',
-      thumbnail: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800',
-      duration: '0:45',
+      title: "Social Media Campaign",
+      category: "Digital Content",
+      thumbnail:
+        "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+      duration: "0:45",
     },
     {
       id: 6,
-      title: 'Corporate Identity Video',
-      category: 'Corporate',
-      thumbnail: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      duration: '2:00',
+      title: "Corporate Identity Video",
+      category: "Corporate",
+      thumbnail:
+        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+      duration: "2:00",
     },
   ];
 
@@ -62,7 +67,8 @@ export default function Videos() {
             Videos
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Cinematic storytelling through motion design, brand films, and video content that captivates and engages audiences.
+            Cinematic storytelling through motion design, brand films, and video
+            content that captivates and engages audiences.
           </p>
         </div>
       </section>
@@ -88,7 +94,11 @@ export default function Videos() {
 
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 group-hover:bg-white transition-all duration-300">
-                    <Play size={24} className="text-gray-900 ml-1" fill="currentColor" />
+                    <Play
+                      size={24}
+                      className="text-gray-900 ml-1"
+                      fill="currentColor"
+                    />
                   </div>
                 </div>
 
@@ -118,16 +128,17 @@ export default function Videos() {
                 Video Production Services
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                From concept to final cut, we create compelling video content that tells your brand's story with impact and authenticity.
+                From concept to final cut, we create compelling video content
+                that tells your brand's story with impact and authenticity.
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  'Brand Films & Commercials',
-                  'Motion Graphics & Animation',
-                  'Social Media Content',
-                  'Event Coverage',
-                  'Product Videos',
-                  'Corporate Communications',
+                  "Brand Films & Commercials",
+                  "Motion Graphics & Animation",
+                  "Social Media Content",
+                  "Event Coverage",
+                  "Product Videos",
+                  "Corporate Communications",
                 ].map((service) => (
                   <li key={service} className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-gray-900" />

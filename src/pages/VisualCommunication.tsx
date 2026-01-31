@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { X } from 'lucide-react';
-
+import { useState } from "react";
+import { X } from "lucide-react";
+import { getVisualCommHook } from "../hooks/fetchHook.js";
 interface Poster {
   id: number;
   title: string;
@@ -10,55 +10,63 @@ interface Poster {
 
 export default function VisualCommunication() {
   const [selectedPoster, setSelectedPoster] = useState<Poster | null>(null);
-
+  console.log("poster main: ", getVisualCommHook());
   const posters: Poster[] = [
     {
       id: 1,
-      title: 'Music Festival 2024',
-      category: 'Event',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Music Festival 2024",
+      category: "Event",
+      image:
+        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 2,
-      title: 'Art Exhibition',
-      category: 'Culture',
-      image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Art Exhibition",
+      category: "Culture",
+      image:
+        "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 3,
-      title: 'Tech Summit',
-      category: 'Conference',
-      image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Tech Summit",
+      category: "Conference",
+      image:
+        "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 4,
-      title: 'Fashion Week',
-      category: 'Fashion',
-      image: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Fashion Week",
+      category: "Fashion",
+      image:
+        "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 5,
-      title: 'Design Conference',
-      category: 'Design',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Design Conference",
+      category: "Design",
+      image:
+        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 6,
-      title: 'Food Festival',
-      category: 'Culinary',
-      image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Food Festival",
+      category: "Culinary",
+      image:
+        "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 7,
-      title: 'Photography Exhibition',
-      category: 'Art',
-      image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Photography Exhibition",
+      category: "Art",
+      image:
+        "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
     {
       id: 8,
-      title: 'Innovation Summit',
-      category: 'Business',
-      image: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: "Innovation Summit",
+      category: "Business",
+      image:
+        "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
   ];
 
@@ -70,7 +78,8 @@ export default function VisualCommunication() {
             Visual Communication
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Powerful visual narratives through posters, prints, and editorial design. Each piece tells a story and commands attention.
+            Powerful visual narratives through posters, prints, and editorial
+            design. Each piece tells a story and commands attention.
           </p>
         </div>
       </section>
@@ -94,7 +103,9 @@ export default function VisualCommunication() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <p className="text-white/80 text-sm mb-1">{poster.category}</p>
+                  <p className="text-white/80 text-sm mb-1">
+                    {poster.category}
+                  </p>
                   <h3 className="text-white text-lg font-serif font-bold">
                     {poster.title}
                   </h3>
@@ -111,7 +122,8 @@ export default function VisualCommunication() {
             Need Custom Visual Design?
           </h2>
           <p className="text-gray-400 mb-8 text-lg">
-            Let's create compelling visuals that capture attention and communicate your message effectively.
+            Let's create compelling visuals that capture attention and
+            communicate your message effectively.
           </p>
           <a
             href="/contact"
@@ -144,7 +156,9 @@ export default function VisualCommunication() {
               className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
             />
             <div className="absolute -bottom-20 left-0 right-0 text-center">
-              <p className="text-white/60 text-sm mb-1">{selectedPoster.category}</p>
+              <p className="text-white/60 text-sm mb-1">
+                {selectedPoster.category}
+              </p>
               <h3 className="text-white text-2xl font-serif font-bold">
                 {selectedPoster.title}
               </h3>

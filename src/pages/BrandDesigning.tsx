@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { X } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
+import {getBrandHook} from "../hooks/fetchhook.js"
 interface Logo {
-  id: number;
+  _id: number;
   title: string;
   image: string;
   variations: string[];
@@ -13,92 +13,93 @@ interface Logo {
 
 export default function BrandDesigning() {
   const [selectedLogo, setSelectedLogo] = useState<Logo | null>(null);
-
-  const logos: Logo[] = [
-    {
-      id: 1,
-      title: 'Minimal Tech Co.',
-      image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      variations: [
-        'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-        'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-      colors: ['#000000', '#FFFFFF', '#F5F5F5'],
-      typography: 'Inter, Sans-serif',
-      mockups: [
-        'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-    },
-    {
-      id: 2,
-      title: 'Artisan Coffee',
-      image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      variations: [
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-      colors: ['#6B4423', '#E8D5C4', '#2C1810'],
-      typography: 'Playfair Display, Serif',
-      mockups: [
-        'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-    },
-    {
-      id: 3,
-      title: 'Urban Studio',
-      image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      variations: [
-        'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-      colors: ['#1A1A1A', '#E63946', '#FFFFFF'],
-      typography: 'Montserrat, Sans-serif',
-      mockups: [
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-    },
-    {
-      id: 4,
-      title: 'Eco Brand',
-      image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      variations: [
-        'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-      colors: ['#2D5016', '#A8D5BA', '#F4F4F4'],
-      typography: 'Lato, Sans-serif',
-      mockups: [
-        'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-    },
-  ];
-
-  const brandIdentities = [
-    {
-      id: 1,
-      title: 'Luxe Fashion House',
-      description: 'A sophisticated brand identity for a high-end fashion retailer, combining timeless elegance with contemporary minimalism.',
-      story: 'Luxe Fashion House approached us to create a brand that would resonate with discerning customers seeking quality and exclusivity.',
-      colors: ['#000000', '#FFFFFF', '#D4AF37'],
-      typography: 'Playfair Display for headings, Inter for body text',
-      image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      mockups: [
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-        'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-    },
-    {
-      id: 2,
-      title: 'Velocity Tech',
-      description: 'A dynamic brand identity for a cutting-edge technology startup focused on AI and machine learning solutions.',
-      story: 'Velocity Tech needed a brand that conveyed innovation, speed, and reliability in the competitive tech landscape.',
-      colors: ['#0A0E27', '#00E5FF', '#FFFFFF'],
-      typography: 'Inter for all typography with various weights',
-      image: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      mockups: [
-        'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      ],
-    },
-  ];
+  const navigate = useNavigate()
+  // const logos: Logo[] = [
+  //   {
+  //     id: 1,
+  //     title: 'Minimal Tech Co.',
+  //     image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     variations: [
+  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //     colors: ['#000000', '#FFFFFF', '#F5F5F5'],
+  //     typography: 'Inter, Sans-serif',
+  //     mockups: [
+  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Artisan Coffee',
+  //     image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     variations: [
+  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //     colors: ['#6B4423', '#E8D5C4', '#2C1810'],
+  //     typography: 'Playfair Display, Serif',
+  //     mockups: [
+  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Urban Studio',
+  //     image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     variations: [
+  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //     colors: ['#1A1A1A', '#E63946', '#FFFFFF'],
+  //     typography: 'Montserrat, Sans-serif',
+  //     mockups: [
+  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'Eco Brand',
+  //     image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     variations: [
+  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //     colors: ['#2D5016', '#A8D5BA', '#F4F4F4'],
+  //     typography: 'Lato, Sans-serif',
+  //     mockups: [
+  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //   },
+  // ];
+  const logos: Logo[] = getBrandHook()
+ console.log("brand main: ", getBrandHook())
+  // const brandIdentities = [
+  //   {
+  //     id: 1,
+  //     title: 'Luxe Fashion House',
+  //     description: 'A sophisticated brand identity for a high-end fashion retailer, combining timeless elegance with contemporary minimalism.',
+  //     story: 'Luxe Fashion House approached us to create a brand that would resonate with discerning customers seeking quality and exclusivity.',
+  //     colors: ['#000000', '#FFFFFF', '#D4AF37'],
+  //     typography: 'Playfair Display for headings, Inter for body text',
+  //     image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  //     mockups: [
+  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //       'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Velocity Tech',
+  //     description: 'A dynamic brand identity for a cutting-edge technology startup focused on AI and machine learning solutions.',
+  //     story: 'Velocity Tech needed a brand that conveyed innovation, speed, and reliability in the competitive tech landscape.',
+  //     colors: ['#0A0E27', '#00E5FF', '#FFFFFF'],
+  //     typography: 'Inter for all typography with various weights',
+  //     image: 'https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  //     mockups: [
+  //       'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //       'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //     ],
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-white pt-20 lg:pt-24">
@@ -117,7 +118,7 @@ export default function BrandDesigning() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-4xl lg:text-5xl font-serif font-bold mb-4">
-              Logo Design
+              Logo Design / Brand Identity
             </h2>
             <p className="text-gray-600 text-lg">
               Iconic marks that capture the essence of your brand
@@ -127,8 +128,9 @@ export default function BrandDesigning() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {logos.map((logo) => (
               <button
-                key={logo.id}
-                onClick={() => setSelectedLogo(logo)}
+                key={logo._id}
+                onClick={()=>navigate(`/brand-designing/${logo._id}`)}
+                // onClick={() => setSelectedLogo(logo)}
                 className="group relative aspect-square rounded-2xl overflow-hidden bg-white border-2 border-gray-100 hover:border-gray-900 transition-all duration-500 hover:scale-[1.02]"
               >
                 <img
@@ -147,7 +149,7 @@ export default function BrandDesigning() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 px-6 lg:px-12">
+      {/* <section className="py-16 lg:py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-4xl lg:text-5xl font-serif font-bold mb-4">
@@ -223,9 +225,8 @@ export default function BrandDesigning() {
             ))}
           </div>
         </div>
-      </section>
-
-      {selectedLogo && (
+      </section> */}
+      {/* {selectedLogo && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6 animate-fadeIn"
           onClick={() => setSelectedLogo(null)}
@@ -317,7 +318,7 @@ export default function BrandDesigning() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

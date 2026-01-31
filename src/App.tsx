@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
 import Home from './pages/Home';
 import BrandDesigning from './pages/BrandDesigning';
+import BrandDesignCard from './pages/BrandDesignCard';
 import VisualCommunication from './pages/VisualCommunication';
 import Videos from './pages/Videos';
 import About from './pages/About';
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/brand-designing" element={<BrandDesigning />} />
+            <Route path="/brand-designing/:brandId" element={<BrandDesignCard />} />
             <Route path="/visual-communication" element={<VisualCommunication />} />
             <Route path="/videos" element={<Videos />} />
             <Route path="/about" element={<About />} />

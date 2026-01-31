@@ -1,0 +1,47 @@
+import { useEffect } from "react";
+import { getBrand, getComment, getContact, getVideo, getVisualComm } from "../components/fetchRoutes";
+import { useState } from "react";
+export const getBrandHook = () => {
+    const [brands, setBrands] = useState([]);
+    useEffect(() => {
+        getBrand().then(setBrands);
+        console.log("hook worked")
+    }, []);
+    return brands
+}
+export const getCommentHook = () => {
+    const [comments, setComments] = useState([]);
+    useEffect(() => {
+        getComment().then(setComments);
+    }, []);
+    return comments
+}
+export const getContactHook = () => {
+    const [contacts, setContacts] = useState([]);
+    useEffect(() => {
+        getContact().then(setContacts);
+    }, []);
+    return contacts
+}
+export const getVideoHook = () => {
+    const [videos, setVideos] = useState([]);
+    useEffect(() => {
+        getVideo().then(setVideos);
+    }, []);
+    console.log("videos hook: ", videos)
+    return videos
+}
+export const getVisualCommHook = () => {
+    const [visualComms, setVisualComms] = useState([]);
+    useEffect(() => {
+        getVisualComm().then(setVisualComms);
+    }, []);
+    return visualComms
+}
+// useEffect(() => {
+//     getBrand()
+//     getComment()
+//     getContact()
+//     getVideo()
+//     getVisualComm()
+// }, {})

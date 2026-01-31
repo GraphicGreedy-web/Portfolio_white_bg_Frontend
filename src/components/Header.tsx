@@ -34,11 +34,11 @@ export default function Header() {
         isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-15">
         <div className="flex items-center justify-between h-20 lg:h-24">
           <Link
             to="/"
-            className="text-xl lg:text-2xl font-serif font-bold tracking-tight hover:opacity-70 transition-opacity"
+            className="text-xl lg:text-2xl font-serif font-bold tracking-tight hover:opacity-70 transition-opacity text-decoration-none text-dark"
           >
             Portfolio
           </Link>
@@ -48,13 +48,13 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium tracking-wide relative group transition-colors ${
+                className={`text-sm font-medium tracking-wide relative group transition-colors text-decoration-none text-dark ${
                   location.pathname === link.path ? 'text-gray-900' : 'text-gray-600'
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full ${
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full text-decoration-none text-dark ${
                     location.pathname === link.path ? 'w-full' : ''
                   }`}
                 />
@@ -64,7 +64,7 @@ export default function Header() {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors text-decoration-none text-dark"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
